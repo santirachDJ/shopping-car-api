@@ -1,17 +1,11 @@
 import startApolloServer from "./bootstrap/graphql.bootstrap";
 import startExpressServer from "./bootstrap/server.bootstrap";
 import app from "./app";
+import optionsMerge from "./graphqlMerge";
 
-const typeDefs = `
-type Query {
-    hello: String
-}`
+const typeDefs = optionsMerge.typeDefs
 
-const resolvers = {
-    Query:{
-        hello:()=> 'hola mundo'
-    }
-}
+const resolvers = optionsMerge.resolvers
 
 const startServer = async ()=>{
     try {
