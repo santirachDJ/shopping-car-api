@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-const typeDefProduct = gql`
+const productTypeDef = gql`
  
  type Query {
     getProduct(id: String): Product
@@ -32,4 +32,4 @@ enum CategoryOptions {
 
 `;
 
-export default typeDefProduct
+export default productTypeDef

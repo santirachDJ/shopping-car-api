@@ -1,21 +1,19 @@
-import productQuerys from './modules/product/query';
-import productMutations from './modules/product/mutation' 
-import typeDefProduct from './modules/product/productTypedf';
+import productGraphqlOptions from "./modules/product";
 
 
 const resolvers = () => {
   return {
     Query: {
-      ...productQuerys
+      ...productGraphqlOptions.query
     },
     Mutation: {
-      ...productMutations
+      ...productGraphqlOptions.mutation
     },
   };
 };
 
 const optionsMerge = {
-    typeDefs: [typeDefProduct],
+    typeDefs: [productGraphqlOptions.typdef],
     resolvers: resolvers(),
 }
 
