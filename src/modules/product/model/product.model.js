@@ -25,8 +25,9 @@ const productSchema = new Schema(
             type: String,
             enum: ['FOOD', 'TECH', 'TOYS'],
             require: true
-        },
-    }
+        }
+    },
+    { timestamps: true }
 );
 
 productSchema.path('code').validate(async (value) => {
