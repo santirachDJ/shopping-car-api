@@ -36,7 +36,6 @@ const initialize = () => {
 
 
 const disconnect = async () =>{
-    await mongooseClient.connection.close()
     return true
   }
 

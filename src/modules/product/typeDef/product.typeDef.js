@@ -13,7 +13,7 @@ const productTypeDef = gql`
 type Product {
     code: String
     name: String
-    price: String
+    price: Int
     category: CategoryOptions
 }
 
@@ -26,7 +26,7 @@ enum CategoryOptions {
  input ProductInput {
     code: String!
     name: String!
-    price: String!
+    price: Int!
     category: CategoryOptions!
  }
 

@@ -1,7 +1,10 @@
+import { addProductRepository } from "../repository/product.repository";
 
 
-async function addProduct(product) {
+const addProduct = async (product) => {
   console.log(product)
+  const response = await addProductRepository(product)
+  console.log(response)
   return product
   
 }
