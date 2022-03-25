@@ -1,23 +1,18 @@
+
+import app from "./app";
+import optionsMerge from "./graphqlMerge";
 import startApolloServer from "./bootstrap/graphql.bootstrap";
 import startExpressServer from "./bootstrap/server.bootstrap";
-import app from "./app";
+import {initialize,disconnect} from "./bootstrap/mongoDB.bootstrap";
 
-const typeDefs = `
-type Query {
-    hello: String
-}`
-
-const resolvers = {
-    Query:{
-        hello:()=> 'hola mundo'
-    }
-}
 
 const startServer = async ()=>{
     try {
-        await startApolloServer(app,typeDefs,resolvers)
+        await initialize()
+        await startApolloServer(app,optionsMerge.typeDefs,optionsMerge.resolvers)
         await startExpressServer(app) 
     } catch (error) {
+        await disconnect()
         console.log('error al iniciar servidores en startServer',error)
     }
 }
