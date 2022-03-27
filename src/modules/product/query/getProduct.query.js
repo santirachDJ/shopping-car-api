@@ -1,16 +1,11 @@
+import { getProductRepository } from "../repository/product.repository";
 
 const getProduct = async (id) => {
-    console.log("id", id)
-    return {
-        code: 1,
-        name: "prueba",
-        price: 100,
-        category: "FOOD"
-    }
+    return await getProductRepository({ _id:id })
 }
 
 const getProductQuery = {
     getProduct: async (_, { id }) => await getProduct(id),
 };
 
-export  default  getProductQuery
+export default getProductQuery
