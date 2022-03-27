@@ -1,11 +1,10 @@
-import { updateProductRepository } from "../repository/product.repository";
+import { getProductRepository, updateProductRepository } from "../repository/product.repository";
 
 
 const updateProduct = async (id,product) => {
   await updateProductRepository(id,product)
-  //consultar el obtener el getProduct
-  return product
-  
+  return await getProductRepository({ _id:id })
+
 }
 
 const updateProductMutation = {

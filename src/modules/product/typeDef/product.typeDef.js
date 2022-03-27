@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 const productTypeDef = gql`
  
  type Query {
-    getProduct(id: String): Product
+    getProduct(id:String): Product
     getProducts(search:ProductByQuery, pagination:PaginationOptions):[Product]
  }
 
@@ -23,6 +23,11 @@ type Product {
     name: String
     price: Int
     category: CategoryOptions
+}
+
+input ProductByOne {
+   id: String
+   code: String
 }
 
 input ProductByQuery {

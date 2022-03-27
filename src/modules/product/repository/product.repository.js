@@ -15,10 +15,15 @@ const addProductRepository = async (data)=> {
   const getProductsRepository = async(searchFilters,limit,offset,filterToSort)=>{
       return await ProductModel.find(searchFilters).skip(offset).limit(limit).sort(filterToSort)
   }
+
+  const getProductRepository = async (filter) =>{
+    return await ProductModel.findOne(filter);
+  }
   
 
   export {
     addProductRepository,
     updateProductRepository,
-    getProductsRepository
+    getProductsRepository,
+    getProductRepository
   }
