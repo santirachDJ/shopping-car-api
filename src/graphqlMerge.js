@@ -1,4 +1,5 @@
 import productGraphqlOptions from "./modules/product";
+import shoppingCarGraphqlOptions from "./modules/shoppingCar";
 
 
 const resolvers = () => {
@@ -7,13 +8,14 @@ const resolvers = () => {
       ...productGraphqlOptions.query
     },
     Mutation: {
-      ...productGraphqlOptions.mutation
+      ...productGraphqlOptions.mutation,
+      ...shoppingCarGraphqlOptions.mutation
     },
   };
 };
 
 const optionsMerge = {
-    typeDefs: [productGraphqlOptions.typdef],
+    typeDefs: [productGraphqlOptions.typdef,shoppingCarGraphqlOptions.typdef],
     resolvers: resolvers(),
 }
 
