@@ -5,7 +5,7 @@ const env = yenv();
 let mongooseClient = null
 
 
-const initialize = () => {
+const startMongoDB = () => {
     const parametersConnection = {
         host: env.DATABASE.MONGO.HOST,
         port: env.DATABASE.MONGO.PORT,
@@ -40,6 +40,6 @@ const disconnect = async () =>{
   }
 
 export {
-    initialize,
+    startMongoDB,
     disconnect
 }
