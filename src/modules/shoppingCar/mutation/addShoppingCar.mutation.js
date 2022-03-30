@@ -1,15 +1,12 @@
-import { addShoppingCarRepository } from "../repository/shoppingCar.repository";
-
-
+import { addShoppingCarRepository } from '../repository/shoppingCar.repository';
 
 const addShoppingCar = async (shopping) => {
-    const response = await addShoppingCarRepository(shopping)
-    return response
-
-}
-
-const addShoppingCarMutation = {
-    addShoppingCar: async (_, { input }) => await addShoppingCar(input),
+  const response = await addShoppingCarRepository(shopping);
+  return response;
 };
 
-export default addShoppingCarMutation
+const addShoppingCarMutation = {
+  addShoppingCar: async (_, { input }) => await addShoppingCar(input),
+};
+
+export default addShoppingCarMutation;

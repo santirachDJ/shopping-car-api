@@ -1,23 +1,25 @@
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer } from 'apollo-server-express';
 
-const startApolloServer = (app,typeDefs,resolvers)=> {
-    const promiseApolloServer = new Promise(async (resolve, reject) => {
-        const apolloServer = new ApolloServer({
-            typeDefs,
-            resolvers
-        })
-        try {
-            await apolloServer.start()
-            apolloServer.applyMiddleware({app,path:'/graphql'})
-            console.log("ApolloServer corriendo")
-            resolve()
-            
-        } catch (error) {
-            console.log("No se pudo iniciar apolloServer",error)
-            reject()
-        }
-    })
-    return promiseApolloServer
-}
+const startApolloServer = (app, typeDefs, resolvers) => {
+  const promiseApolloServer = new Promise((resolve, reject) => {
+    const apolloServer = new ApolloServer({
+      typeDefs,
+      resolvers,
+    });
 
-export default startApolloServer
+    apolloServer
+      .start()
+      .then(() => {
+        apolloServer.applyMiddleware({ app, path: '/graphql' });
+        console.log('ApolloServer corriendo');
+        resolve();
+      })
+      .catch((error) => {
+        console.log('No se pudo iniciar apolloServer', error);
+        reject();
+      });
+  });
+  return promiseApolloServer;
+};
+
+export default startApolloServer;

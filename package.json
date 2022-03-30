@@ -8,7 +8,10 @@
     "build": "babel src -d dist --source-maps",
     "serve": "node dist/index.js",
     "clean": "rimraf dist",
-    "test": "NODE_ENV=development jest --forceExit --coverage"
+    "test": "NODE_ENV=development jest --forceExit --coverage",
+    "lint": "eslint .",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write",
+    "lint-global": "echo \"Prettier is running...\" && prettier \"**/*.{js,jsx,ts,tsx}\" --write && echo \"ESlint is running...\" && eslint ."
   },
   "repository": {
     "type": "git",
@@ -35,11 +38,31 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.7",
+    "@babel/core": "~7.15.5",
+    "@babel/eslint-parser": "~7.15.4",
     "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "~7.15.0",
     "@babel/preset-env": "^7.16.11",
+    "@condor-labs/eslint-config": "1.2.0",
+    "@condor-labs/matchbox": "1.6.2",
+    "@condor-labs/prettier-config": "1.1.1",
+    "eslint": "7.23.0",
+    "eslint-config-prettier": "~8.3.0",
+    "eslint-config-standard": "~16.0.3",
+    "eslint-plugin-import": "~2.24.2",
+    "eslint-plugin-node": "~11.1.0",
+    "eslint-plugin-prettier": "~3.4.1",
+    "eslint-plugin-promise": "~5.1.0",
     "graphql": "^15.8.0",
-    "jest": "^27.5.1"
-    
+    "husky": "7.0.4",
+    "jest": "^27.5.1",
+    "lint-staged": "10.5.4",
+    "prettier": "2.6.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --write"
+    ]
   }
 }
