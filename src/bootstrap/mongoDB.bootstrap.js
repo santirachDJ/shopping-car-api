@@ -21,7 +21,7 @@ const startMongoDB = () => {
     const promiseInitialize = new Promise(async (resolve, reject) => {
         try {
            await mongooseClient.getClient();
-            console.log(`isConnected(after):${mongooseClient._isConnected()}`);
+            console.log(`Connection mongoDB successful(after):${mongooseClient._isConnected()}`);
             resolve(true)
         } catch (error) {
             
