@@ -6,8 +6,13 @@ const updateProduct = async (id, product) => {
   if (productCache) {
     deleteRedis(id);
   }
-  await updateProductRepository(id, product);
-  return await getProductRepository({ _id: id });
+  const producFind = await getProductRepository({ _id: id });
+  if (producFind) {
+    await updateProductRepository(id, product);
+  } else {
+    throw new Error('Product no found was wrong');
+  }
+  return producFind;
 };
 
 const updateProductMutation = {
