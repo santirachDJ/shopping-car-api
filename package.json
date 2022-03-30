@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/santirachDJ/shopping-car-api#readme",
   "dependencies": {
+    "@condor-labs/health-middleware": "^1.4.1",
     "@condor-labs/logger": "^1.1.0",
     "@condor-labs/mongodb": "^1.1.3",
     "@condor-labs/redis": "^1.0.4",
