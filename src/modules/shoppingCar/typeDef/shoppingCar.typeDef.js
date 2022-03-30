@@ -1,37 +1,32 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 const shoppingCarTypeDef = gql`
- 
- 
- type Mutation {
+  type Mutation {
     addShoppingCar(input: ShoppingCarInput): ShoppingCar
-    updateShoppingCar(id:String,products:[ProductShoppingInput]):ShoppingCar
+    updateShoppingCar(id: String, products: [ProductShoppingInput]): ShoppingCar
   }
 
-
-type ShoppingCar{
+  type ShoppingCar {
     code: String
     totalPrice: Int
-    products:[ProductShopping]
-}
+    products: [ProductShopping]
+  }
 
-type ProductShopping {
+  type ProductShopping {
     productId: String
     quantity: Int
-}
+  }
 
-
-input ProductShoppingInput {
+  input ProductShoppingInput {
     productId: String
     quantity: Int
-}
+  }
 
-input ShoppingCarInput {
+  input ShoppingCarInput {
     code: String!
     totalPrice: String
-    products:[ProductShoppingInput]
- }
-
+    products: [ProductShoppingInput]
+  }
 `;
 
-export default shoppingCarTypeDef
+export default shoppingCarTypeDef;

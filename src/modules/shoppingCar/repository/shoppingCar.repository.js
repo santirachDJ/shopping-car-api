@@ -1,27 +1,23 @@
-import ShoppingCarModel from "../model/shoppingCar.model";
+import ShoppingCarModel from '../model/shoppingCar.model';
 
 const addShoppingCarRepository = async (data) => {
   return await ShoppingCarModel.create(data);
 };
 
-const updateShoppingCarRepository = async (id,products,totality) => {
+const updateShoppingCarRepository = async (id, products, totality) => {
   return await ShoppingCarModel.updateOne(
     { _id: id },
     {
       $set: {
-        totalPrice:totality,
-        products: products
-      }
+        totalPrice: totality,
+        products: products,
+      },
     }
-  )
-}
+  );
+};
 
-const getShoppingCarRepository = async (filter) =>{
+const getShoppingCarRepository = async (filter) => {
   return await ShoppingCarModel.findOne(filter);
-}
+};
 
-export {
-  addShoppingCarRepository,
-  updateShoppingCarRepository,
-  getShoppingCarRepository
-}
+export { addShoppingCarRepository, updateShoppingCarRepository, getShoppingCarRepository };

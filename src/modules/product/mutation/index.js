@@ -1,9 +1,8 @@
-import addProductMutation from "./addProduct.mutation";
-import updateProductMutation from "./updateProduct.mutation";
-
+import addProductMutation from './addProduct.mutation';
+import updateProductMutation from './updateProduct.mutation';
 
 const productMutations = {
-    ...addProductMutation,
-    ...updateProductMutation
-}
-export default productMutations
+  ...addProductMutation,
+  ...updateProductMutation,
+};
+export default productMutations;

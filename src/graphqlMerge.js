@@ -1,22 +1,21 @@
-import productGraphqlOptions from "./modules/product";
-import shoppingCarGraphqlOptions from "./modules/shoppingCar";
-
+import productGraphqlOptions from './modules/product';
+import shoppingCarGraphqlOptions from './modules/shoppingCar';
 
 const resolvers = () => {
   return {
     Query: {
-      ...productGraphqlOptions.query
+      ...productGraphqlOptions.query,
     },
     Mutation: {
       ...productGraphqlOptions.mutation,
-      ...shoppingCarGraphqlOptions.mutation
+      ...shoppingCarGraphqlOptions.mutation,
     },
   };
 };
 
 const optionsMerge = {
-    typeDefs: [productGraphqlOptions.typdef,shoppingCarGraphqlOptions.typdef],
-    resolvers: resolvers(),
-}
+  typeDefs: [productGraphqlOptions.typdef, shoppingCarGraphqlOptions.typdef],
+  resolvers: resolvers(),
+};
 
-export default optionsMerge
+export default optionsMerge;
