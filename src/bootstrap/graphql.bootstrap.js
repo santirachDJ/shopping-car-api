@@ -9,7 +9,7 @@ const startApolloServer = (app,typeDefs,resolvers)=> {
         try {
             await apolloServer.start()
             apolloServer.applyMiddleware({app,path:'/graphql'})
-            console.log("apolloServer corriendo")
+            console.log("ApolloServer corriendo")
             resolve()
             
         } catch (error) {
