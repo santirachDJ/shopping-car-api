@@ -10,9 +10,10 @@ const updateProduct = async (id, product) => {
   if (producFind) {
     await updateProductRepository(id, product);
   } else {
-    throw new Error('Product no found was wrong');
+    new Error('Product no found was wrong');
+    return false;
   }
-  return producFind;
+  return true;
 };
 
 const updateProductMutation = {

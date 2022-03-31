@@ -2,13 +2,13 @@ import { gql } from 'apollo-server-express';
 
 const productTypeDef = gql`
   type Query {
-    getProduct(code: String): Product
+    getProduct(id: String): Product
     getProducts(search: ProductByQuery, pagination: PaginationOptions): [Product]
   }
 
   type Mutation {
     addProduct(input: ProductInput): Product
-    updateProduct(id: String, input: ProductInput): Product
+    updateProduct(id: String, input: ProductUpdateInput): Boolean
   }
 
   enum CategoryOptions {
@@ -22,6 +22,7 @@ const productTypeDef = gql`
     name: String
     price: Int
     category: CategoryOptions
+    _id: String
   }
 
   input ProductByOne {
@@ -47,6 +48,13 @@ const productTypeDef = gql`
     name: String!
     price: Int!
     category: CategoryOptions!
+  }
+
+  input ProductUpdateInput {
+    code: String
+    name: String
+    price: Int
+    category: CategoryOptions
   }
 `;
 

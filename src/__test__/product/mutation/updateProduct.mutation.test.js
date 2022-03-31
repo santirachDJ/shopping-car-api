@@ -31,7 +31,7 @@ describe('update Product mutation testing unit', () => {
         const response = await updateProductMutation.updateProduct({}, { id:"623dca9be6c1f84b12504865", input })
         expect(
             response
-        ).toEqual(outputExpected);
+        ).toEqual(true);
 
         expect(productRepository.updateProductRepository).toHaveBeenCalled();
     });
@@ -57,7 +57,7 @@ describe('update Product mutation testing unit', () => {
         const response = await updateProductMutation.updateProduct({}, { id:"623dca9be6c1f84b12504865", input })
         expect(
             response
-        ).toEqual(outputExpected);
+        ).toEqual(true);
 
         expect(productRepository.updateProductRepository).toHaveBeenCalled();
         expect(redisHelper.getDataRedis).toHaveBeenCalled();

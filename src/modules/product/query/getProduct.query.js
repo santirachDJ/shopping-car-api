@@ -1,18 +1,18 @@
 import { getDataRedis, setRedis } from '../../../bootstrap/redis.bootstrap';
 import { getProductRepository } from '../repository/product.repository';
 
-const getProduct = async (code) => {
-  const productCache = await getDataRedis(code);
+const getProduct = async (id) => {
+  const productCache = await getDataRedis(id);
   let productResponse = {};
 
   if (productCache) {
     productResponse = JSON.parse(productCache);
   } else {
-    const product = await getProductRepository({ code: code });
+    const product = await getProductRepository({ _id: id });
     if (!product) {
       throw new Error('Product no found was wrong');
     }
-    setRedis(code, JSON.stringify(product));
+    setRedis(id, JSON.stringify(product));
     productResponse = product;
   }
 
@@ -20,7 +20,7 @@ const getProduct = async (code) => {
 };
 
 const getProductQuery = {
-  getProduct: async (_, { code }) => await getProduct(code),
+  getProduct: async (_, { id }) => await getProduct(id),
 };
 
 export default getProductQuery;
