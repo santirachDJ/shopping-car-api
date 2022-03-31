@@ -44,10 +44,10 @@ jobs:
           echo “${AWS_EC2_PEM}” > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${AWS_EC2_USERNAME}@${AWS_EC2_PUBLIC_IP} '
             cd /home/ubuntu/ltabera-training &&
-            git checkout develop &&
+            git checkout development &&
             git fetch --all &&
-            git reset --hard origin/develop &&
-            git pull origin develop
+            git reset --hard origin/development &&
+            git pull origin development
             sudo docker-compose up -d --build
             
           '
