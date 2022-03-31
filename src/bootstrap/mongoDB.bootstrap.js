@@ -11,7 +11,6 @@ const startMongoDB = () => {
     database: env.DATABASE.MONGO.DATABASE,
     user: env.DATABASE.MONGO.USER,
     password: `${env.DATABASE.MONGO.PASS}`,
-    replicaSet: env.DATABASE.MONGO.REPLICASET,
     ssl: env.DATABASE.MONGO.SSL,
     authSource: env.DATABASE.MONGO.AUTHSOURCE,
   };
