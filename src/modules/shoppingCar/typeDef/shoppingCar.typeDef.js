@@ -10,6 +10,7 @@ const shoppingCarTypeDef = gql`
     code: String
     totalPrice: Int
     products: [ProductShopping]
+    _id: String
   }
 
   type ProductShopping {
