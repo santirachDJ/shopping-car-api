@@ -13,6 +13,8 @@ services:
     depends_on:
       - mongo
       - redis
+    volumes:
+      - .:/usr/src/app
   mongo:
     container_name: mongoDb
     image: mongo

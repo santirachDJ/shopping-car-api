@@ -19,7 +19,7 @@ describe('get Product testing unit', () => {
         const query = 
         `
             query {
-                getProduct(id: "623e0b69e516da5f9df0d6fd") {
+                getProduct(code: "623e0b69e516da5f9df0d6fd") {
                     code
                     name
                 }
@@ -37,7 +37,7 @@ describe('get Product testing unit', () => {
         jest.spyOn(redisHelper, 'getDataRedis').mockReturnValue(JSON.stringify(outputExpected));
         jest.spyOn(redisHelper, 'setRedis').mockReturnValue(jest.fn());
         jest.spyOn(productRepository, 'getProductRepository').mockReturnValue(outputExpected);
-        const response = await getProductQuery.getProduct({},{id:"'623e0b69e516da5f9df0d6fd'"})
+        const response = await getProductQuery.getProduct({},{code:"'623e0b69e516da5f9df0d6fd'"})
         expect(
             response
         ).toEqual(outputExpected);
@@ -54,7 +54,7 @@ describe('get Product testing unit', () => {
         jest.spyOn(redisHelper, 'setRedis').mockReturnValue(null);
         jest.spyOn(productRepository, 'getProductRepository').mockReturnValue(outputExpected);
 
-        const response = await getProductQuery.getProduct({},{id:"'623e0b69e516da5f9df0d6fd'"})
+        const response = await getProductQuery.getProduct({},{code:"'623e0b69e516da5f9df0d6fd'"})
         expect(
             response
         ).toEqual(outputExpected);
