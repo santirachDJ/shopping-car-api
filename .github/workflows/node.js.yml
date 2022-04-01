@@ -56,6 +56,8 @@ jobs:
             sudo git reset --hard origin/development 
             echo "paso 4" 
             sudo git pull origin development
-            echo "paso 5" 
-            sudo docker-compose up -d --build
+            echo "paso 5"
+            sudo docker-compose down
+            echo "paso 6" 
+            sudo docker-compose up --build --force-recreate -d
           '
