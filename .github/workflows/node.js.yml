@@ -43,8 +43,8 @@ jobs:
           AWS_EC2_USERNAME: ${{ secrets.AWS_EC2_USERNAME  }}
         run: | 
           echo "paso 0"
-          echo "$AWS_EC2_USERNAME"
-          echo "$AWS_EC2_PUBLIC_IP"
+          echo ${{ secrets.AWS_EC2_PUBLIC_IP  }}
+          echo ${{ secrets.AWS_EC2_USERNAME  }}
           pwd
           echo "AWS_EC2_KEY" > private_key && chmod 400 private_key
           ls
