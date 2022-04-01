@@ -1,0 +1,7 @@
+# Directories
+.vscode/
+.husky/
+node_modules/
+dist/
+reports/
+coverage/
