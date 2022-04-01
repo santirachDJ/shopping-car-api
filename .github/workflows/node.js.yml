@@ -48,7 +48,7 @@ jobs:
           pwd
           echo "$AWS_EC2_KEY" > private_key && chmod 400 private_key
           ls
-          ssh -o StrictHostKeyChecking=no -i private_key ${{env.AWS_EC2_USERNAME}}@${{env.AWS_EC2_PUBLIC_IP}} '
+          ssh -o StrictHostKeyChecking=no -i private_key ${AWS_EC2_USERNAME}@${env.AWS_EC2_PUBLIC_IP} '
             cd /var/www/shopping-car-api &&
             echo "paso 1" sudo git checkout development &&
             echo "paso 2" sudo git fetch --all &&
