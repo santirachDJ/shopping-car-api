@@ -42,3 +42,4 @@ on:
         run: |
           cd /var/www/shopping-car-api 
           pwd
+          echo "step 1 llegamos aca"
