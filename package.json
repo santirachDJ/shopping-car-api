@@ -66,5 +66,14 @@
       "eslint",
       "prettier --write"
     ]
+  },
+  "jest":{
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "<rootDir>/src/bootstrap/*.bootstrap.js",
+      "<rootDir>/src/app.js",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/graphqlMerge.js"
+  ]
   }
 }
