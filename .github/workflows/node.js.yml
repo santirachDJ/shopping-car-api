@@ -42,4 +42,11 @@ on:
         run: |
           cd /var/www/shopping-car-api 
           pwd
-          echo "step 1 llegamos aca"
+          echo "${AWS_EC2_PEM}" > private_key && chmod 400 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${AWS_EC2_USERNAME}@${AWS_EC2_PUBLIC_IP} '
+            echo "paso 1" sudo git checkout development &&
+            echo "paso 2" sudo git fetch --all &&
+            echo "paso 3" sudo git reset --hard origin/development &&
+            echo "paso 4" sudo git pull origin development
+            echo "paso 5" sudo docker-compose up -d --build
+          '
