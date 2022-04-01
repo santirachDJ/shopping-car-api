@@ -36,14 +36,17 @@ jobs:
         uses: actions/checkout@v2
       - name: PWD
         env:
-          AWS_EC2_PEM: ${{ secrets.AWS_EC2_PEM  }}
+          AWS_EC2_KEY: ${{ secrets.AWS_EC2_PEM  }}
           AWS_EC2_PUBLIC_IP: ${{ secrets.AWS_EC2_PUBLIC_IP  }}
           AWS_EC2_USERNAME: ${{ secrets.AWS_EC2_USERNAME  }}
-        run: |
-          cd /var/www/shopping-car-api 
+        run: | 
+          echo "paso 0"
+          echo "${AWS_EC2_USERNAME}"
+          echo "${AWS_EC2_PUBLIC_IP}"
           pwd
-          echo "${AWS_EC2_PEM}" > private_key && chmod 400 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ${AWS_EC2_USERNAME}@${AWS_EC2_PUBLIC_IP} '
+          echo "${AWS_EC2_KEY}" > private_key && chmod 400 private_key
+          ssh -i private_key ${AWS_EC2_USERNAME}@${AWS_EC2_PUBLIC_IP} '
+            cd /var/www/shopping-car-api
             echo "paso 1" sudo git checkout development &&
             echo "paso 2" sudo git fetch --all &&
             echo "paso 3" sudo git reset --hard origin/development &&
