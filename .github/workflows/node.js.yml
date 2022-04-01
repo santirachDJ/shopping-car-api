@@ -51,13 +51,9 @@ jobs:
             echo "paso 1" 
             sudo git checkout development
             echo "paso 2" 
-            sudo git fetch --all 
-            echo "paso 3" 
-            sudo git reset --hard origin/development 
-            echo "paso 4" 
             sudo git pull origin development
-            echo "paso 5"
+            echo "paso 3"
             sudo docker-compose down
-            echo "paso 6" 
+            echo "paso 4" 
             sudo docker-compose up --build --force-recreate -d
           '
