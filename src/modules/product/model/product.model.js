@@ -18,6 +18,14 @@ const productSchema = new Schema(
     price: {
       type: Number,
       required: true,
+      validate(value) {
+        if (value === null) {
+          throw new Error('Price can not be empty string, really ?');
+        } else if (value < 0) {
+          throw new Error('Price must be a positive number');
+        }
+      },
+      set: (v) => (typeof v === 'number' && v > 0 ? v : ' price can not negative value'),
     },
     category: {
       type: String,
@@ -32,6 +40,11 @@ productSchema.path('code').validate(async (value) => {
   const isExist = await model('Product').countDocuments({ code: value });
   return !isExist;
 }, 'code already exists');
+
+productSchema.path('price').validate(async (value) => {
+  const isNegative = value < 0;
+  return !isNegative;
+}, 'price can not be negative');
 
 // Adding the pagination plugin
 productSchema.plugin(mongoosePaginate);
