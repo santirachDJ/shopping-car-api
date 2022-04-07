@@ -17,8 +17,18 @@ const getProductsRepository = async (searchFilters, limit, offset, filterToSort)
   return await ProductModel.find(searchFilters).skip(offset).limit(limit).sort(filterToSort);
 };
 
+const getAllProductCount = async () => {
+  return await ProductModel.count({});
+};
+
 const getProductRepository = async (filter) => {
   return await ProductModel.findOne(filter);
 };
 
-export { addProductRepository, updateProductRepository, getProductsRepository, getProductRepository };
+export {
+  addProductRepository,
+  updateProductRepository,
+  getProductsRepository,
+  getProductRepository,
+  getAllProductCount,
+};

@@ -18,11 +18,8 @@ describe('get Products testing unit', () => {
         const query = 
         `
             query {
-                getProducts(search:{name:"BAIROn",code:"*23*",sort:"code"}) {
-                    category,
-                    name,
-                    code,
-                    price
+                getProducts(search:{name:"BAIROn",code:"*23*"},sort:"code") {
+                  size
                   } 
             }
         `;
@@ -42,10 +39,11 @@ describe('get Products testing unit', () => {
               ]
         ]
         jest.spyOn(productRepository, 'getProductsRepository').mockReturnValue(outputExpected);
-        const response = await getProductsQuery.getProducts({},{search:{name:"BAIROn",code:"*23*",sort:"code"},pagination:{ limit: 25, offset: 0 }})
+        jest.spyOn(productRepository, 'getAllProductCount').mockReturnValue(10);
+        const response = await getProductsQuery.getProducts({},{search:{name:"BAIROn",code:"*23*"},sort:"code",pagination:{ limit: 25, offset: 0 }})
         expect(
             response
-        ).toEqual(outputExpected);
+        ).toEqual({items:outputExpected,size:1});
     
         expect(productRepository.getProductsRepository).toHaveBeenCalledTimes(1); 
       });
@@ -54,11 +52,11 @@ describe('get Products testing unit', () => {
     it('Testing get products empty', async() => {
         const outputExpected = []
         jest.spyOn(productRepository, 'getProductsRepository').mockReturnValue(outputExpected);
-        const response = await getProductsQuery.getProducts({},{search:{name:"BAIROn",code:"*23*",sort:"code"},pagination:{ limit: 25, offset: 0 }})
+        jest.spyOn(productRepository, 'getAllProductCount').mockReturnValue(10);
+        const response = await getProductsQuery.getProducts({},{search:{name:"BAIROn",code:"*23*"},sort:"code",pagination:{ limit: 25, offset: 0 }})
         expect(
             response
-        ).toEqual(outputExpected);
-        expect(response).toHaveLength(0)    
+        ).toEqual({"items":outputExpected, "size": 0});   
         expect(productRepository.getProductsRepository).toHaveBeenCalledTimes(1); 
       });
 

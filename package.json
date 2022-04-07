@@ -32,6 +32,7 @@
     "apollo-server-express": "^3.6.5",
     "express": "^4.17.3",
     "graphql-tools": "^8.2.3",
+    "lodash": "^4.17.21",
     "mongoose-paginate-v2": "^1.6.3",
     "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
@@ -67,13 +68,13 @@
       "prettier --write"
     ]
   },
-  "jest":{
+  "jest": {
     "coveragePathIgnorePatterns": [
       "node_modules",
       "<rootDir>/src/bootstrap/*.bootstrap.js",
       "<rootDir>/src/app.js",
       "<rootDir>/src/index.js",
       "<rootDir>/src/graphqlMerge.js"
-  ]
+    ]
   }
 }

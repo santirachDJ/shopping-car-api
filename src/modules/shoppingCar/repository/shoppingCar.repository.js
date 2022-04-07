@@ -17,7 +17,23 @@ const updateShoppingCarRepository = async (id, products, totality) => {
 };
 
 const getShoppingCarRepository = async (filter) => {
-  return await ShoppingCarModel.findOne(filter);
+  return await ShoppingCarModel.findOne(filter).exec();
 };
 
-export { addShoppingCarRepository, updateShoppingCarRepository, getShoppingCarRepository };
+const addProductToShoppingCarRepository = async (id, product) => {
+  return await ShoppingCarModel.findOneAndUpdate(
+    { _id: id },
+    { $addToSet: { products: { productId: product.productId, quantity: product.quantity } } }
+  );
+};
+
+const removeProductToShoppingCarRepository = async (id, productId) => {
+  return await ShoppingCarModel.findOneAndUpdate({ _id: id }, { $pull: { products: productId } }, { multi: true });
+};
+export {
+  addShoppingCarRepository,
+  updateShoppingCarRepository,
+  getShoppingCarRepository,
+  addProductToShoppingCarRepository,
+  removeProductToShoppingCarRepository,
+};
