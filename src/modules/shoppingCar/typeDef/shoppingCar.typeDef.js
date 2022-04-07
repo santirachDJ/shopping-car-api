@@ -4,6 +4,7 @@ const shoppingCarTypeDef = gql`
   type Mutation {
     addShoppingCar(input: ShoppingCarInput): ShoppingCar
     updateShoppingCar(id: String, products: [ProductShoppingInput]): ShoppingCar
+    addProductToShoppingCar(id: String, product: ProductShoppingInput): ShoppingCar
   }
 
   type ShoppingCar {
