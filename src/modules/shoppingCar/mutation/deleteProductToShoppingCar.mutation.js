@@ -2,14 +2,14 @@ import { translateErrors } from '../../../errors/translateErrors.errors';
 import { calculatePrice } from '../../../helpers/utilities.helpers';
 import { getShoppingCarRepository, updateShoppingCarRepository } from '../repository/shoppingCar.repository';
 
-const addProductToShoppingCar = async (id, product) => {
+const deleteProductToShoppingCar = async (id, productId) => {
   console.log('id', id);
-  console.log('product', product);
+  console.log('productId', productId);
   const findShopping = await getShoppingCarRepository({ _id: id });
   const newProducts = findShopping.products.filter((prudctClone) => {
-    return prudctClone.productId.toString() !== product.productId.toString();
+    return prudctClone.productId.toString() !== productId.toString();
   });
-  newProducts.push(product);
+
   const totality = await calculatePrice(newProducts);
 
   await updateShoppingCarRepository(id, newProducts, totality);
@@ -18,8 +18,10 @@ const addProductToShoppingCar = async (id, product) => {
   return response;
 };
 
-const addProductToShoppingCarMutation = {
-  addProductToShoppingCar: translateErrors(async (_, { id, product }) => await addProductToShoppingCar(id, product)),
+const deleteProductToShoppingCarMutation = {
+  deleteProductToShoppingCar: translateErrors(
+    async (_, { id, productId }) => await deleteProductToShoppingCar(id, productId)
+  ),
 };
 
-export default addProductToShoppingCarMutation;
+export default deleteProductToShoppingCarMutation;
