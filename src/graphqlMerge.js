@@ -5,6 +5,7 @@ const resolvers = () => {
   return {
     Query: {
       ...productGraphqlOptions.query,
+      ...shoppingCarGraphqlOptions.query,
     },
     Mutation: {
       ...productGraphqlOptions.mutation,

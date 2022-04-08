@@ -1,9 +1,10 @@
 import shoppingCarMutations from './mutation';
+import shoppingCarQuerys from './query';
 import shoppingCarTypeDef from './typeDef/shoppingCar.typeDef';
 
 const shoppingCarGraphqlOptions = {
   mutation: shoppingCarMutations,
-  query: {},
+  query: shoppingCarQuerys,
   typdef: shoppingCarTypeDef,
 };
 
