@@ -11,10 +11,11 @@ const deleteProductToShoppingCar = async (id, productId) => {
   });
 
   const totality = await calculatePrice(newProducts);
-
+  console.log('newProducts', newProducts);
   await updateShoppingCarRepository(id, newProducts, totality);
   /* await addProductToShoppingCarRepository(id, { productId: product.productId, quantity: product.quantity });*/
   const response = await getShoppingCarRepository({ _id: id });
+  console.log('response', response);
   return response;
 };
 
